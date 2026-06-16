@@ -15,8 +15,17 @@ async def root():
         return {"Pinged your deployment. You successfully connected to MongoDB!"}
     except Exception as e:
         return {"Error": "Unable to connect to the database."}
-
     
+
+@app.get("/users/{user_name}")
+async def get_user(user_name: str):
+    db = client["users"]
+    collection = db["Plain Users"]
+    user = collection.find_one({"name": user_name})
+    if user:
+        return {"user": user}
+    else:
+        return {"Error": "User not found."}
 
 # @app.get("/items/{item_id}")
 # def read_item(item_id: int, q: Optional[str] = None):
