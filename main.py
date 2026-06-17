@@ -8,7 +8,7 @@ from pydantic import BaseModel
 class User(BaseModel):
     name: str
 
-uri = "mongodb+srv://lexws33:KdkPwU2AZ4wU9jNL@cluster0.f0fjujx.mongodb.net/?appName=Cluster0"
+uri = "mongodb+srv://lexws33:<pwd>@cluster0.f0fjujx.mongodb.net/?appName=Cluster0"
 app = FastAPI()
 client = MongoClient(uri, server_api=ServerApi('1'))
 
